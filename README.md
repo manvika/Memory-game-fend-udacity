@@ -7,7 +7,7 @@ A memory challenge game consists of deck of cards with different icons. When the
                                               o	total time, 
                                               o	star rating 
 ## Instructions
-1.	clone the repository https://github.com/Manvikamohan/memory-game-fend-udacity
+1.	clone the repository https://github.com/manvika/Memory-game-fend-udacity.git
 2.	Open the index.html in your browser 
 3.	look for Restart icon on top right, click to shuffle the card and play the game.
 
