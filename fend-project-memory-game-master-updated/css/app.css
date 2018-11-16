@@ -1,0 +1,245 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+/*They do that because the property of box-sizing is not inherited by default,
+and they want this style applied to all elements AND any pseudo-elements.
+*, *::after, *::before { box-sizing:border-box; }
+*/
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url('../img/5b4ee547e504b_thumb900.jpg'); /* Background pattern from Subtle Patterns */
+    font-family: 'Coda', cursive;
+
+}
+/* takes care for the display of different div and align it to clear
+*/
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.text{
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 18px;
+}
+
+/* the header's font display is defined
+#ff0000 is also hex red color, RGB value is (255,0,0)
+*/
+h1 {
+    font-family: sans-serif;
+    font-weight: 400;
+    text-shadow: 0 0 3px #FF0000;
+}
+
+/*
+ * Styles for the cards in deck
+ background-image: The linear-gradient() CSS function creates an image consisting of a progressive transition between two or more colors along a straight line.
+card spacing is defined
+ */
+
+.deck {
+    width: 660px;/* distance between the container div and deck div*/
+    min-height: 680px; /* height between every cards*/
+    background-image: linear-gradient(wheat, salmon, lightCyan);/*progressive transition between wheat,salmon and lightCyan colors along a straight line*/
+    padding: 32px;/*defined the space between border and cards.*/
+    border-radius: 10px;/* gives curvshape to the outer corner of the div*/
+    display: flex;/* wrap all the cards*/
+    flex-wrap: wrap;
+    justify-content: space-between;/* equal spacing between all the cards*/
+    align-items: center;/* all cards are aligned to center*/
+    margin: 0 0 3em;/*margin-top: 0px; margin-right: 0px;margin-bottom: 3em; margin-left: 0px;*/
+    border-style: outset;/* display is more outer*/
+
+}
+/*
+each card style is defined
+*/
+.deck .card {
+    height: 125px;/*height of each card*/
+    width: 125px;/*width of each card*/
+    background: #ADFF2F;/*Green yellow*/
+    font-size: 0;
+    color: blue;/*color of the card when it is clicked*/
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;/*icon on the card is centered*/
+    align-items: center;
+    border-style: outset;
+
+
+}
+.card:hover {              /** rotate the card 20deg when we hover over it*/
+    -webkit-transform: rotateX(20deg);/*this property accepts the list of "transform functions" as values, function rotates() rotates element around X-axis at 20 deg*/
+    transform: rotateX(20deg);
+    background-color: #4CAF50; /* Green */
+    box-shadow: 0 20px 20px rgba(50,50,50,.2);
+  }
+
+.deck .card.open {/*it occurs when card is open*/
+    background: #191970;/*hex color mignight blue*/
+    cursor: default;
+    -webkit-transform: rotateX(360deg);
+    transform: rotateX(360deg);
+}
+
+.deck .card.show { /*dark cyan color appears when hovering over the card*/
+    font-size: 33px;
+    color:#008B8B;/*darkCyan*/
+}
+
+.deck .card.match {/*it occurs when the card match*/
+    cursor: default;
+    background: #ff6347;/*tomato*/
+    font-size: 33px;
+}
+
+/*
+ * Styles for the result link, and the pop-up modal
+reference: https://www.webdesignerdepot.com/2012/10/creating-a-modal-window-with-html5-and-css3/
+ */
+
+.modalDialog {
+  position: fixed;
+  font-family: cursive;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background:rgba(0,0,0,0.8);
+  z-index: 99999;/*property specifies the stack order of an element*/
+  opacity: 0;/*property to add transparency to the background*/
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+
+.modalDialog:target{
+  opacity: 1;/*property to add transparency to the background*/
+  pointer-events:auto;
+}
+h2{
+  border-bottom-style: dotted;
+}
+.modalDialog > div {
+  width: 400px;
+  position: relative;
+  margin:10% auto;/*margin-top: 10%;margin-right: auto;margin-bottom: 10%;margin-left: auto;*/
+  padding: 5px 20px 13px 20px;
+  border-radius: 10px;/*border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;*/
+  background: #fff;/*hex white*/
+  background: -moz-linear-gradient(#fff,#999);
+  background: -webkit-linear-gradient(#fff,#999);
+  background: -o-linear-gradient(#fff,#999);
+}
+.hide{
+  display:none;
+}
+.modal__background{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background:rgba(0,0,0,0.8);
+  z-index: 1000;/*property specifies the stack order of an element*/
+}
+.modal__body{
+  position:relative;
+  width: 400px;
+  top:50%;
+  left: 50%;
+  background: #ffffff;
+  transform:translate(-50%,-70%);
+}
+.modal_heading{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  border-bottom:1px solid gray;
+}
+
+.modal__stats {/*pop up window display*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+
+}
+.modal__buttons {/*display of the button onpop up window*/
+  display: flex;
+  justify-content: space-around;
+  padding: 16px;
+}
+.modal__button {
+  width: 60px;
+  height:30px;
+}
+
+
+.close{/*x that appears on the pop-up window*/
+  background: #606061;
+  color: #ffffff;
+  line-height: 25px;
+  position:absolute;
+  right:-12px;
+  text-align:center;
+  top:-10px;
+  width:24px;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-border-radius:12px;
+  -moz-border-radius:12px;
+  border-radius: 12px;
+  -moz-box-shadow:1px 1px 3px #000;
+  -webkit-box-shadow:1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000;
+
+}
+.close:hover{background: #00d9ff;}/*change color when hovering*/
+/**
+Score-panel style
+*/
+.score-panel {/*displays the star rating,moves, restart and time panel*/
+    text-align: left;
+    width: 650px;
+    margin-bottom: 10px;
+}
+
+.score-panel .stars { /*displays stars*/
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+    color: #DAA520;/*Goldenrod*/
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+    color: #F0FFFF;/* Azure color*/
+}
